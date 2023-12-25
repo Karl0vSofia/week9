@@ -6,6 +6,7 @@
   <title>MindAR with A-frame</title>
   <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mindarjs"></script>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   
@@ -30,16 +31,26 @@
    
     <a-entity camera position="0 3 10"></a-entity>
   </a-scene>
-  
-  
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // Ініціалізація MindAR
+     
       MindAR.initialize();
-      
-      // Виявлення маркерів
-      MindAR.trackMarkers();
+
+     
+      MindAR.trackMarker({
+        markerImageUrl: "../Apple_Store_logo.svg",
+        onMarkerFound: function () {
+          
+          console.log("MindAR Marker Found");
+        },
+        onMarkerLost: function () {
+         
+          console.log("MindAR Marker Lost");
+        }
+      });
     });
   </script>
+  
+  
 </body>
 </html>
